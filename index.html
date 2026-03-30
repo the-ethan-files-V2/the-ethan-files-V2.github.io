@@ -145,9 +145,9 @@
 
 <script>
   const sections = {
-    early: ['images/art1.jpeg','images/art2.jpeg'],
-    escalation: ['images/art3.jpeg','images/art4.jpeg'],
-    discrimination: ['images/art5.jpeg','images/art6.jpeg'],
+    early: ['images/art4.jpeg','images/art5.jpeg'],
+    escalation: ['images/art3.jpeg','images/art2.jpeg'],
+    discrimination: ['images/art6.jpeg'],
     restricted: ['images/art7.jpeg','https://media.discordapp.net/attachments/1454177864625946717/1462591459889778740/GIF-2026-01-18-23-35-03.gif?ex=69cbb1b1&is=69ca6031&hm=292b77852e8ff70dbf3d3ec691394fed4eebbe330df5c701a14fde42b8349512&=']
   };
 
@@ -163,7 +163,7 @@
     meta.innerHTML = `FILE ID: EF-0${index}<br>STATUS: FLAGGED<br>NOTE: Subject exhibiting harmful behaviour`;
 
     if (section === 'restricted') {
-      img.style.filter = 'blur(8px)';
+      img.style.filter = '';
       meta.innerHTML += '<br>ACCESS LEVEL: HIGH';
     }
 
