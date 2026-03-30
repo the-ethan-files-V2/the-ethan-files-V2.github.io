@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ethan Files</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background: #050505;
+      color: #d3d3d3;
+    }
+
+    header {
+      background: linear-gradient(180deg, #111, #000);
+      border-bottom: 2px solid #333;
+      padding: 20px;
+      text-align: center;
+      letter-spacing: 6px;
+      font-size: 28px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      height: 100vh;
+    }
+
+    nav {
+      background: #0d0d0d;
+      border-right: 2px solid #222;
+      padding: 20px;
+    }
+
+    nav h2 {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    nav button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    main {
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #111;
+      border: 2px solid #222;
+      padding: 10px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      border-color: #555;
+      transform: scale(1.03);
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #777;
+      margin-top: 5px;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .warning {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 999;
+      text-align: center;
+    }
+
+    .hidden { display: none; }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #555;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+<div id="warning" class="warning">
+  <h2>⚠ RESTRICTED ARCHIVE ⚠</h2>
+  <p>This file set contains disturbing and harmful behaviour from a REAl PERSON btw</p>
+  <button onclick="enterSite()">ENTER DATABASE</button>
+</div>
+
+<header>THE ETHAN FILES</header>
+
+<div class="container">
+  <nav>
+    <h2>ARCHIVE SECTORS</h2>
+    <button onclick="loadSection('early')">Early Incidents</button>
+    <button onclick="loadSection('escalation')">Escalation Logs</button>
+    <button onclick="loadSection('discrimination')">Discriminatory Behaviour</button>
+    <button onclick="loadSection('restricted')">Restricted Files</button>
+  </nav>
+
+  <main>
+    <div id="gallery" class="grid"></div>
+  </main>
+</div>
+
+<footer>This archive is taken from a real person btw</footer>
+
+<script>
+  const sections = {
+    early: ['images/art1.jpg','images/art2.jpg'],
+    escalation: ['images/art3.jpg','images/art4.jpg'],
+    discrimination: ['images/art5.jpg','images/art6.jpg'],
+    restricted: ['images/art7.jpg','images/art8.jpg']
+  };
+
+  function createCard(src, index, section) {
+    const div = document.createElement('div');
+    div.className = 'card';
+
+    const img = document.createElement('img');
+    img.src = src;
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = `FILE ID: EF-0${index}<br>STATUS: FLAGGED<br>NOTE: Subject exhibiting harmful behaviour`;
+
+    if (section === 'restricted') {
+      img.style.filter = 'blur(8px)';
+      meta.innerHTML += '<br>ACCESS LEVEL: HIGH';
+    }
+
+    div.appendChild(img);
+    div.appendChild(meta);
+
+    return div;
+  }
+
+  function loadSection(section) {
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = '';
+
+    sections[section].forEach((src, i) => {
+      gallery.appendChild(createCard(src, i + 1, section));
+    });
+  }
+
+  function enterSite() {
+    document.getElementById('warning').classList.add('hidden');
+  }
+
+  loadSection('early');
+</script>
+
+</body>
+</html>
